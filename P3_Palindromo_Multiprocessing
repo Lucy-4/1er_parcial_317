@@ -1,0 +1,10 @@
+import multiprocessing
+
+def is_palindrome(word):
+    return word == word[::-1]
+
+if __name__ == '__main__':
+    word = input("Ingresa una palabra: ")
+    pool = multiprocessing.Pool(processes=1)
+    result = pool.apply_async(is_palindrome, (word,))
+    print(f"La palabra {word} {' es un palindromo' if result.get() else 'no es un palindromo'}")
